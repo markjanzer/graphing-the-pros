@@ -1,0 +1,39 @@
+# Activate and configure extensions
+# https://middlemanapp.com/advanced/configuration/#configuring-extensions
+
+activate :autoprefixer do |prefix|
+  prefix.browsers = "last 2 versions"
+end
+
+# Use Sprockets for asset pipeline
+require "sprockets/es6"
+activate :sprockets do |s|
+  s.supported_output_extensions << '.es6'
+end
+
+activate :livereload
+
+# Per-page layout changes
+page '/*.xml', layout: false
+page '/*.json', layout: false
+page '/*.txt', layout: false
+
+require "set_pro_data.rb"
+
+# Helpers
+# Methods defined in the helpers block are available in templates
+# https://middlemanapp.com/basics/helper-methods/
+
+# helpers do
+#   def some_helper
+#     'Helping'
+#   end
+# end
+
+# Build-specific configuration
+# https://middlemanapp.com/advanced/configuration/#environment-specific-settings
+
+# configure :build do
+#   activate :minify_css
+#   activate :minify_javascript
+# end
