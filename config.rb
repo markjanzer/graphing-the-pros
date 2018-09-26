@@ -18,7 +18,7 @@ page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
 
-require "set_pro_data.rb"
+# require "set_pro_data.rb" 
 
 # Helpers
 # Methods defined in the helpers block are available in templates
