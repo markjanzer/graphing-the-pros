@@ -54,19 +54,24 @@ var layout = {
   yaxis: {
     title: "Rank",
     tickvals: [0, 100, 200, 300, 400, 500, 600, 700, 800, 1000, 1175],
-    ticktext: ["Platinum III", "Platinum II", "Platinum I", "Diamond V", "Diamond IV", "Diamond III", "Diamond II", "Diamond I", "Master", "Master 200LP", "≈ Challenger"]
+    ticktext: ["Platinum III", "Platinum II", "Platinum I", "Diamond V", "Diamond IV", "Diamond III", "Diamond II", "Diamond I", "Master", "200LP", "≈ Challenger"]
   },
-  autosize: false,
-  width: 1600,
-  height: 1000,
+  // responsive: true,
+  // autosize: false,
+  // width: 1600,
+  // height: 1000,
   margin: {
-    l: 150,
-    r: 150,
-    b: 100,
-    t: 100,
-    pad: 4
+    // l: 150,
+    // r: 150,
+    // b: 100,
+    // t: 100,
+    // pad: 4
   }, 
   hovermode: "closest"
 }
 
-Plotly.newPlot('graphing-the-pros', plotlyData, layout);
+var config = {
+  responsive: true
+}
+
+Plotly.newPlot('graphing-the-pros', plotlyData, layout, { responsive: true });
