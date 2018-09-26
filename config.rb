@@ -18,11 +18,11 @@ page '/*.json', layout: false
 page '/*.txt', layout: false
 
 
-# # Use “pretty” URLs (without the `.html` suffix)
-# activate :directory_indexes
+# Use “pretty” URLs (without the `.html` suffix)
+activate :directory_indexes
 
-# # Append hashes to compiled assets
-# activate :asset_hash
+# Append hashes to compiled assets
+activate :asset_hash
 
 # require "set_pro_data.rb" 
 
