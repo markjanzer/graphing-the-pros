@@ -1,8 +1,5 @@
-require "HTTParty"
-# require "nokogiri"
-# require "mechanize"
-require "byebug"
 require "watir"
+require "byebug"
 
 class Scraper
   attr_accessor :response
