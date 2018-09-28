@@ -10,6 +10,7 @@ gem 'middleman-autoprefixer', '~> 2.7'
 gem "watir"
 gem "nokogiri"
 gem "byebug"
+gem "httparty"
 
 gem "rake"
 gem "puma"
