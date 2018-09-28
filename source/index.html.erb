@@ -1,9 +1,12 @@
 ---
 title: Graphing the Pros
 ---
-
+<h1>Graphing the Pros</h1>
 <div id="graphing-the-pros"></div>
+<p>Graphing tracking the pros bootcamp.</p>
+<p>Deployed at <%= Time.current %></p>
 <script>
   var data = <%= config[:pro_data].to_json %>
+
 </script>
 <%= javascript_include_tag "site" %>
