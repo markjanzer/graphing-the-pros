@@ -1,7 +1,7 @@
 # require "watir"
 # require "nokogiri"
 # require "byebug"
-require "HTTParty"
+# require "HTTParty"
 
 # class Scraper
 #   def initialize
