@@ -27,7 +27,6 @@ GEM
     dotenv (2.5.0)
     erubis (2.7.0)
     execjs (2.7.0)
-    executable-hooks (1.5.0)
     fast_blank (1.0.0)
     fastimage (2.1.4)
     ffi (1.9.25)
@@ -121,7 +120,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  executable-hooks
   httparty
   middleman (~> 4.2)
   middleman-autoprefixer (~> 2.7)

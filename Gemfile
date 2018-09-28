@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "~> 2.4.4"
+ruby "~> 2.4.3"
 
 gem 'middleman', '~> 4.2'
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
@@ -9,4 +9,4 @@ gem "sprockets-es6"
 gem 'middleman-autoprefixer', '~> 2.7'
 gem "byebug"
 gem "httparty"
-gem "executable-hooks"
+# gem "executable-hooks"
