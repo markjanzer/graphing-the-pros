@@ -9,3 +9,4 @@ gem "sprockets-es6"
 gem 'middleman-autoprefixer', '~> 2.7'
 gem "byebug"
 gem "httparty"
+gem "executable-hooks"
