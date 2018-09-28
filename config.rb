@@ -24,9 +24,11 @@ activate :directory_indexes
 # Append hashes to compiled assets
 activate :asset_hash
 
-# require "scraper.rb"
+require "scraper.rb"
 # scraper = Scraper.new
 # PRO_DATA = scraper.response
+# PRO_DATA = Scraper.new.response
+set :pro_data, Scraper.new.call
 
 # require "set_pro_data.rb" 
 

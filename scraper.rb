@@ -3,13 +3,18 @@ require "nokogiri"
 require "byebug"
 
 class Scraper
-  attr_accessor :response
-
   def initialize
-    browser = Watir::Browser.new :chrome, headless: true
+  end
+
+  def call
+    puts "Scraper called"
+    # This is too fast, td 10 doesn't show up
+    # browser = Watir::Browser.new :chrome, headless: true
+
+    browser = Watir::Browser.new :chrome
+    
     # This url has the stream toggled off on the first visit
     browser.goto "https://www.trackingthepros.com/s/toggle_stream?page=bootcamp"
-
 
     select = browser.select(name: "displayTable_length")
     option = select.option(value: "-1")
@@ -17,24 +22,24 @@ class Scraper
 
     html = Nokogiri::HTML(browser.html)
 
+    table = html.at_css("#displayTable")
+    table_body = table.at_css("tbody")
+    table_rows = table_body.css("tr")
 
-    table = browser.table(id: "displayTable")
-    table_body = table.tbody
-    table_rows = table_body.trs
-
-    @response = table_rows.to_a.map do |tr|
+    response = table_rows.to_a.map do |tr|
       self.table_row_to_data(tr)
     end
 
-    puts "here"
     browser.close
+
+    return response
   end
 
   def table_row_to_data(table_row)
-    table_data = table_row.tds
+    table_data = table_row.css("td")
 
-    id = table_row.id
-    team = table_data[1].children[0].text
+    id = table_row["id"]
+    team = table_data[1].children[0].text.strip
     player = table_data[2].children[0].text
     summoner_name = table_data[3].children[0].text
     role = table_data[4].text
@@ -44,8 +49,6 @@ class Scraper
     losses = table_data[8].text.gsub(",", "").to_i
     win_percent = table_data[9].text.to_f
     games = wins + losses
-
-    puts player
 
     obj = { 
       id: id,
@@ -63,5 +66,5 @@ class Scraper
   end
 end
 
-scraper = Scraper.new
+# scraper = Scraper.new
 # puts scraper.response

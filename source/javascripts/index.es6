@@ -42,7 +42,7 @@ var plotlyData = dataWithoutManyGames.map(pro => {
     },
     type: "scatter",
     hoverinfo: "markers+text",
-    text: [`${pro.player}<br>${pro.rank}, ${pro.lp} LP<br>${pro.winPercent}% WR`],
+    text: [`${pro.player}<br>${pro.rank}, ${pro.lp} LP<br>${pro.win_percent}% WR`],
   }
 });
 

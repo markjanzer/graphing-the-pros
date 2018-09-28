@@ -3,8 +3,7 @@ title: Graphing the Pros
 ---
 
 <div id="graphing-the-pros"></div>
-
 <script>
-  var data = <%= PRO_DATA %>
+  var data = <%= config[:pro_data].to_json %>
 </script>
 <%= javascript_include_tag "site" %>
