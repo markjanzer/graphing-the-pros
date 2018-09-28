@@ -8,8 +8,10 @@ gem "middleman-sprockets", "~> 4"
 gem "sprockets-es6" 
 gem 'middleman-autoprefixer', '~> 2.7'
 gem "watir"
+gem "nokogiri"
 gem "byebug"
 
 gem "rake"
 gem "puma"
 gem "rack-contrib"
+gem "sidekiq"

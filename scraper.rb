@@ -1,17 +1,22 @@
 require "watir"
+require "nokogiri"
 require "byebug"
 
 class Scraper
   attr_accessor :response
 
   def initialize
-    browser = Watir::Browser.new
+    browser = Watir::Browser.new :chrome, headless: true
     # This url has the stream toggled off on the first visit
-    browser.goto("https://www.trackingthepros.com/s/toggle_stream?page=bootcamp")
+    browser.goto "https://www.trackingthepros.com/s/toggle_stream?page=bootcamp"
+
 
     select = browser.select(name: "displayTable_length")
     option = select.option(value: "-1")
     option.click
+
+    html = Nokogiri::HTML(browser.html)
+
 
     table = browser.table(id: "displayTable")
     table_body = table.tbody
@@ -21,8 +26,7 @@ class Scraper
       self.table_row_to_data(tr)
     end
 
-    byebug
-
+    puts "here"
     browser.close
   end
 
@@ -41,6 +45,8 @@ class Scraper
     win_percent = table_data[9].text.to_f
     games = wins + losses
 
+    puts player
+
     obj = { 
       id: id,
       team: team,
@@ -58,4 +64,4 @@ class Scraper
 end
 
 scraper = Scraper.new
-puts scraper.response
+# puts scraper.response
