@@ -48,14 +48,12 @@ var plotlyData = dataWithoutManyGames.map(pro => {
 });
 
 var layout = {
-  title: "Tracking the Pros",
   xaxis: {
     title: "Games Played",
   },
   yaxis: {
-    title: "Rank",
     tickvals: [0, 100, 200, 300, 400, 500, 600, 700, 800, 1000, 1175],
-    ticktext: ["Platinum III", "Platinum II", "Platinum I", "Diamond V", "Diamond IV", "Diamond III", "Diamond II", "Diamond I", "Master", "200LP", "≈ Challenger"]
+    ticktext: ["Plat III", "Plat II", "Plat I", "D V", "D IV", "D III", "D II", "D I", "Master", "200LP", "≈ Challenger"]
   },
   // autosize: false,
   // width: 1600,
