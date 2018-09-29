@@ -5,19 +5,34 @@ title: Graphing the Pros
   <h1>Graphing the Pros</h1>
 </header>
 
-<section id="graphing-the-pros"></section>
+<div class="filters">
+<!--   <input type="number" class="js-min-games" value="20" />
+  <input type="number" class="js-max-games" value="250" /> -->
+
+<!--   <select class="js-">
+    <option value="">None</option>
+    <option value="role">Role</option>
+    <option value="region">Region</option>
+  </select> -->
+
+  <!-- <button>Mean/Meme</button> -->
+</div>
+
+<section id="graphing-the-pros" class="graph"></section>
 
 <section class="content">
-  <p>See how each pro fares in Korean solo queue. Made with data from <a href="https://www.trackingthepros.com/bootcamp">Tracking the Pros.</a></p>
-  <p>Deployed at <%= Time.now %></p>
+  <div>See how the pros fare in Korean solo queue. Made with data from <a href="https://www.trackingthepros.com/bootcamp">Tracking the Pros.</a></div>
+
+  <div>Updated at <%= Time.now %></div>
 </section>
 
 <footer class="footer">
   <a href="https://github.com/markjanzer/graphing-the-pros"><%= image_tag "GitHub-Mark-32px.png" %></a>
 </footer>
 
-
 <script>
   var data = <%= config[:pro_data].to_json %>
+  var time = <%= Time.now.to_i %>
 </script>
+
 <%= javascript_include_tag "site" %>
