@@ -1,8 +1,8 @@
 function renderPlot(initial) {
   let mobile = window.innerWidth <= 480;
 
-  const minGames = parseInt($(".js-min-games")[0].value);
-  const maxGames = parseInt($(".js-max-games")[0].value);
+  const minGames = parseInt($(".js-min-games")[0].value || 0);
+  const maxGames = parseInt($(".js-max-games")[0].value || 0);
 
   let massagedData = data.filter(pro => {
     return pro.games < maxGames && pro.games > minGames
