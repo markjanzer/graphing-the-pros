@@ -11,6 +11,16 @@
     <%= stylesheet_link_tag "site" %>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <%# javascript_include_tag "site" %>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80177688-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-80177688-2');
+    </script>
   </head>
   <body>
     <%= yield %>

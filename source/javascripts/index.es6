@@ -49,10 +49,11 @@ var plotlyData = dataWithoutManyGames.map(pro => {
   }
 });
 
+console.log(mobile);
 
 var layout = {
   xaxis: {
-    title: "Games Played",
+    title: "Games Played",  
     // showspikes: true,
   },
   yaxis: {
@@ -70,7 +71,7 @@ var layout = {
     // pad: 4
   }, 
   hovermode: "closest",
-  showLegend: !mobile
+  showlegend: !mobile,
   // showlegend: false,
 
 }
