@@ -15,6 +15,7 @@ function lpFromPlatIII(pro) {
 }
 
 var dataWithoutManyGames = data.filter(pro => {
+  // return pro;
   return pro.games < 250 && pro.games > 20
 });
 
@@ -73,4 +74,4 @@ var config = {
   responsive: true
 }
 
-Plotly.newPlot('graphing-the-pros', plotlyData, layout, { responsive: true });
+Plotly.newPlot('graphing-the-pros', plotlyData, layout, config);
