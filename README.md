@@ -1,6 +1,6 @@
 # graphing-the-pros
 
-This site uses data from [Tracking the Pros] and displays it a chart, allowing us to see how fast (or slow) the pros are climbing the Korean ladder.
+This displays data from [Tracking the Pros] as a graph, allowing us to see how fast (or slow) the pros are climbing the Korean ladder.
 
 This static site is built with [Middleman], the chart is made with [Plotly.js], and it is deployed with [Netlify].
 
