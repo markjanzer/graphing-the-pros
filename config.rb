@@ -25,7 +25,7 @@ activate :directory_indexes
 activate :asset_hash
 
 require "scraper.rb"
-set :pro_data, scrape
+set :pro_data, Scraper.new.call
 # scraper = Scraper.new
 # PRO_DATA = scraper.response
 # PRO_DATA = Scraper.new.response
