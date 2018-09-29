@@ -68,25 +68,25 @@ function lpFromPlatIII(pro) {
 }
 
 function generateLayout(options) {
+  let margin = {};
+  if (options.mobile) {
+    margin = {
+      l: 50,
+      r: 20,
+      t:25
+    }
+  }
+
   var layout = {
     xaxis: {
       title: "Games Played",
-      fixedrange: true,
     },
     yaxis: {
       tickvals: [0, 100, 200, 300, 400, 500, 600, 700, 800, 1000, 1175],
-      ticktext: ["Plat III", "Plat II", "Plat I", "D V", "D IV", "D III", "D II", "D I", "Master", "200LP", "≈ Challenger"],
-      fixedrange: true,
+      ticktext: ["Plat III", "Plat II", "Plat I", "D V", "D IV", "D III", "D II", "D I", "Master", "200LP", "Chal"],
     },
-    margin: {
-      // l: 150,
-      // r: 150,
-      // b: 100,
-      t: 25,
-      // pad: 4
-    }, 
+    margin: margin,
     hovermode: "closest",
-
     showlegend: !options.mobile,
     // legend: {
     //   orientation: "h",
@@ -103,23 +103,6 @@ const $ = (selector) => {
     return document.querySelectorAll(selector);
   }
 }
-
-function debounce(func, wait) {
-  var timeout;
-
-  return function executedFunction() {
-    var context = this;
-    var args = arguments;
-      
-    var later = function() {
-      timeout = null;
-    };
-  
-    clearTimeout(timeout);
-
-    timeout = setTimeout(later, wait);
-  };
-};
 
 document.addEventListener("change", (event) => {
   if (event.target.classList.contains("js-input")) {
