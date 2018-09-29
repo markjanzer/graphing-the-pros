@@ -12,7 +12,7 @@ class Scraper
       {
         player: self.removeATag(pro["player"]),
         summoner: self.removeATag(pro["summoner"]),
-        role: pro["role"],
+        role: pro["role"].gsub(" (Sub)", ""),
         team: pro["team_plug"].gsub("-", " "),
         win_percent: pro["winper"].to_f,
         wins: pro["wins"].to_i,

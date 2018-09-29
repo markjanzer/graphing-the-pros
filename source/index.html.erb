@@ -6,26 +6,26 @@ title: Graphing the Pros
 </header>
 
 <div class="filters">
-  <label for="Min Games">Min Games:</label>
-  <input name="Min Games" type="number" class="input--games js-min-games js-input" value="20" />
-  <label for="Max Games">Max Games:</label>
-  <input name="Max Games" type="number" class="input--games js-max-games js-input" value="250" />
-
-<!--   <select class="js-">
-    <option value="">None</option>
-    <option value="role">Role</option>
-    <option value="region">Region</option>
-  </select> -->
-
-  <!-- <button>Mean/Meme</button> -->
+  <div>
+    <label for="Min Games">Min Games:</label>
+    <input name="Min Games" type="number" class="input--games js-min-games js-input" value="20" />
+    <label for="Max Games">Max Games:</label>
+    <input name="Max Games" type="number" class="input--games js-max-games js-input" value="250" />
+  </div>
+  
+  <div>
+    <lable for="Color By">Color By</lable>
+    <select class="js-color">
+      <option value="player" class="js-color-option">Player</option>
+      <option value="role" class="js-color-option">Role</option>
+    </select>
+  </div>
 </div>
 
 <section id="graphing-the-pros" class="graph"></section>
 
 <section class="content">
   <div>See how the pros fare in Korean solo queue. Made with data from <a href="https://www.trackingthepros.com/bootcamp">Tracking the Pros.</a></div>
-
-  <div>Updated at <%= Time.now %></div>
 </section>
 
 <footer class="footer">
@@ -34,7 +34,7 @@ title: Graphing the Pros
 
 <script>
   var data = <%= config[:pro_data].to_json %>
-  var time = <%= Time.now.to_i %>
+  var updatedAt = <%= Time.now.to_i %>
 </script>
 
 <%= javascript_include_tag "site" %>

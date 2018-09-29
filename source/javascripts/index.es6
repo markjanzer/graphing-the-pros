@@ -1,5 +1,6 @@
 function renderPlot(initial) {
   let mobile = window.innerWidth <= 480;
+  let colorBy = $(".js-color")[0].selectedOptions[0].value
 
   const minGames = parseInt($(".js-min-games")[0].value || 0);
   const maxGames = parseInt($(".js-max-games")[0].value || 0);
@@ -20,7 +21,7 @@ function renderPlot(initial) {
     }
   });
 
-  const plotlyData = dataToPlotlyData(massagedData);
+  const plotlyData = dataToPlotlyData(massagedData, colorBy);
   const layout = generateLayout({ mobile });
   const config = {
     responsive: true,
@@ -34,9 +35,9 @@ function renderPlot(initial) {
   }
 }
 
-function dataToPlotlyData(data) {
+function dataToPlotlyData(data, sort) {
   var plotlyData = data.map(pro => {
-    return {
+    let proData = {
       x: [pro.games],
       y: [lpFromPlatIII(pro)],
       name: pro.player,
@@ -48,6 +49,12 @@ function dataToPlotlyData(data) {
       hoverinfo: "text+markers",
       text: [`${pro.player}<br>${pro.rank}, ${pro.lp} LP<br>${pro.win_percent}% WR`],
     }
+
+    if (sort === "role") {
+      proData.marker.color = roleColors()[pro.role];
+    }
+
+    return proData
   });
 
   return plotlyData;
@@ -68,12 +75,14 @@ function lpFromPlatIII(pro) {
 }
 
 function generateLayout(options) {
-  let margin = {};
+  let margin = {
+    t: 25
+  };
   if (options.mobile) {
     margin = {
       l: 50,
       r: 20,
-      t:25
+      t: 25
     }
   }
 
@@ -88,12 +97,19 @@ function generateLayout(options) {
     margin: margin,
     hovermode: "closest",
     showlegend: !options.mobile,
-    // legend: {
-    //   orientation: "h",
-    // },
   }
   
   return layout;
+}
+
+const roleColors = () => {
+  return {
+    "Top": "rgb(244, 169, 65)",
+    "Jungle": "rgb(65, 244, 97)",
+    "Mid": "rgb(65, 65, 244)",
+    "ADC": "rgb(244, 66, 66)",
+    "Support": "rgb(163, 65, 244)",
+  }
 }
 
 const $ = (selector) => {
@@ -105,7 +121,8 @@ const $ = (selector) => {
 }
 
 document.addEventListener("change", (event) => {
-  if (event.target.classList.contains("js-input")) {
+  if (event.target.classList.contains("js-input") ||
+    event.target.classList.contains("js-color")) {
     renderPlot();
   }
 });

@@ -12,6 +12,11 @@ body {
   justify-content: center;
 }
 
+.filters {
+  display: flex;
+  justify-content: space-between;
+}
+
 .input--games {
   max-width: 3rem;
 }
