@@ -1,4 +1,6 @@
 var ranks = ["Platinum III", "Platinum II", "Platinum I", "Diamond V", "Diamond IV", "Diamond III", "Diamond II", "Diamond I", "Master"];
+var width = window.innerWidth;
+var mobile = window.innerWidth <= 480;
 
 function lpFromPlatIII(pro) {
   var ranks = ["Platinum III", "Platinum II", "Platinum I", "Diamond V", "Diamond IV", "Diamond III", "Diamond II", "Diamond I", "Master"];
@@ -68,6 +70,7 @@ var layout = {
     // pad: 4
   }, 
   hovermode: "closest",
+  showLegend: !mobile
   // showlegend: false,
 
 }
