@@ -7,7 +7,17 @@ body {
   }
 }
 
-.center {
+.header {
   display: flex;
   justify-content: center;
+}
+
+.content {
+  padding: 0 16%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
 }
