@@ -71,10 +71,12 @@ function generateLayout(options) {
   var layout = {
     xaxis: {
       title: "Games Played",
+      fixedrange: true,
     },
     yaxis: {
       tickvals: [0, 100, 200, 300, 400, 500, 600, 700, 800, 1000, 1175],
       ticktext: ["Plat III", "Plat II", "Plat I", "D V", "D IV", "D III", "D II", "D I", "Master", "200LP", "≈ Challenger"],
+      fixedrange: true,
     },
     margin: {
       // l: 150,
