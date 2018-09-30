@@ -1,6 +1,6 @@
 function renderPlot(initial) {
   let mobile = window.innerWidth <= 480;
-  let colorBy = $(".js-color")[0].selectedOptions[0].value
+  let sortBy = $(".js-sort")[0].selectedOptions[0].value
 
   const minGames = parseInt($(".js-min-games")[0].value || 0);
   const maxGames = parseInt($(".js-max-games")[0].value || 0);
@@ -21,7 +21,8 @@ function renderPlot(initial) {
     }
   });
 
-  const plotlyData = dataToPlotlyData(massagedData, colorBy);
+  const plotlyData = dataToPlotlyData(massagedData, sortBy);
+  console.log(plotlyData);
   const layout = generateLayout({ mobile });
   const config = {
     responsive: true,
@@ -36,25 +37,34 @@ function renderPlot(initial) {
 }
 
 function dataToPlotlyData(data, sort) {
-  var plotlyData = data.map(pro => {
-    let proData = {
-      x: [pro.games],
-      y: [lpFromPlatIII(pro)],
-      name: pro.player,
-      mode: "markers",
-      marker: {
-        size: 8
-      },
-      type: "scatter",
-      hoverinfo: "text+markers",
-      text: [`${pro.player}<br>${pro.rank}, ${pro.lp} LP<br>${pro.win_percent}% WR`],
-    }
+  let plotlyData = [];
 
-    if (sort === "role") {
-      proData.marker.color = roleColors()[pro.role];
-    }
+  data.forEach(pro => {
+    let plotlyDatum = plotlyData.find(pd => pd.name === pro[sort]);
+    if (plotlyDatum) {
+      plotlyDatum.x.push(pro.games);
+      plotlyDatum.y.push(lpFromPlatIII(pro));
+      plotlyDatum.text.push(`${pro.player}<br>${pro.rank}, ${pro.lp} LP<br>${pro.win_percent}% WR`)
+    } else {
+      plotlyDatum = {
+        x: [pro.games],
+        y: [lpFromPlatIII(pro)],
+        name: pro[sort],
+        mode: "markers",
+        marker: {
+          size: 8
+        },
+        type: "scatter",
+        hoverinfo: "text+markers",
+        text: [`${pro.player}<br>${pro.rank}, ${pro.lp} LP<br>${pro.win_percent}% WR`],
+      }
 
-    return proData
+      if (sort === "team") {
+        plotlyDatum.marker.color = teamColors()[plotlyDatum.name]
+      }
+
+      plotlyData.push(plotlyDatum);
+    }
   });
 
   return plotlyData;
@@ -102,15 +112,31 @@ function generateLayout(options) {
   return layout;
 }
 
-const roleColors = () => {
+const teamColors = () => {
   return {
-    "Top": "rgb(244, 169, 65)",
-    "Jungle": "rgb(65, 244, 97)",
-    "Mid": "rgb(65, 65, 244)",
-    "ADC": "rgb(244, 66, 66)",
-    "Support": "rgb(163, 65, 244)",
+    "Team Vitality": '#e6194b',
+    "100 Thieves": '#3cb44b',
+    "Fnatic": '#ffe119',
+    "Invictus Gaming": '#4363d8',
+    "Royal Never Give Up": '#f58231',
+    "Phong Vũ Buffalo": '#911eb4',
+    "Cloud9": '#46f0f0',
+    "Dire Wolves": '#f032e6',
+    "G Rex": '#bcf60c',
+    "G2 Esports": '#fabebe',
+    "KaBuM! e Sports": '#008080',
+    "Gen.G": '#e6beff',
+    "Team Liquid": '#9a6324',
+    "MAD Team": '#fffac8',
+    "EDward Gaming": '#800000',
+    "SuperMassive eSports": '#aaffc3',
+    "Ascension Gaming": '#808000',
+    "Gambit Esports": '#000000',
+    "DetonatioN FocusMe": '#000075',
+    "Kaos Latin Gamers": '#808080',
   }
 }
+
 
 const $ = (selector) => {
   if (selector.charAt(0) === "#") {
@@ -122,9 +148,11 @@ const $ = (selector) => {
 
 document.addEventListener("change", (event) => {
   if (event.target.classList.contains("js-input") ||
-    event.target.classList.contains("js-color")) {
+    event.target.classList.contains("js-sort")) {
     renderPlot();
   }
 });
 
+// Set max games to Rekkles + 20, fallback to 270
+$(".js-max-games")[0].value = (data.find(pro => pro.player === "Rekkles").games + 20) || 270;
 renderPlot();
