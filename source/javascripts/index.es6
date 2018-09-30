@@ -60,7 +60,9 @@ function dataToPlotlyData(data, sort) {
       }
 
       if (sort === "team") {
-        plotlyDatum.marker.color = teamColors()[plotlyDatum.name]
+        plotlyDatum.marker.color = teamColors()[plotlyDatum.name];
+      } else if (sort === "region") {
+        plotlyDatum.marker.color = regionColors()[plotlyDatum.name];
       }
 
       plotlyData.push(plotlyDatum);
@@ -137,6 +139,23 @@ const teamColors = () => {
   }
 }
 
+const regionColors = () => {
+  return {
+    "NA": '#e6194b',
+    "EU": '#3cb44b',
+    "CN": '#ffe119',
+    "LMS": '#4363d8',
+    "VN": '#f58231',
+    "OCE": '#911eb4',
+    "JP": '#46f0f0',
+    "CIS": '#f032e6',
+    "BR": '#bcf60c',
+    "TR": '#fabebe',
+    "LAS": '#008080',
+    "SEA": '#e6beff',
+    "KR": '#9a6324',
+  }
+}
 
 const $ = (selector) => {
   if (selector.charAt(0) === "#") {
