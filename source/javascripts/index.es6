@@ -60,9 +60,9 @@ function dataToPlotlyData(data, sort) {
       }
 
       if (sort === "team") {
-        plotlyDatum.marker.color = teamColors()[plotlyDatum.name];
+        plotlyDatum.marker.color = teamColors(plotlyDatum.name);
       } else if (sort === "region") {
-        plotlyDatum.marker.color = regionColors()[plotlyDatum.name];
+        plotlyDatum.marker.color = regionColors(plotlyDatum.name);
       }
 
       plotlyData.push(plotlyDatum);
@@ -114,48 +114,18 @@ function generateLayout(options) {
   return layout;
 }
 
-const teamColors = () => {
-  return {
-    "Team Vitality": '#e6194b',
-    "100 Thieves": '#3cb44b',
-    "Fnatic": '#ffe119',
-    "Invictus Gaming": '#4363d8',
-    "Royal Never Give Up": '#f58231',
-    "Phong Vũ Buffalo": '#911eb4',
-    "Cloud9": '#46f0f0',
-    "Dire Wolves": '#f032e6',
-    "G Rex": '#bcf60c',
-    "G2 Esports": '#fabebe',
-    "KaBuM! e Sports": '#008080',
-    "Gen.G": '#e6beff',
-    "Team Liquid": '#9a6324',
-    "MAD Team": '#fffac8',
-    "EDward Gaming": '#800000',
-    "SuperMassive eSports": '#aaffc3',
-    "Ascension Gaming": '#808000',
-    "Gambit Esports": '#000000',
-    "DetonatioN FocusMe": '#000075',
-    "Kaos Latin Gamers": '#808080',
-  }
+const colors = ["#543aad", "#6fad45", "#ab68dc", "#c09437", "#637bd6", "#d05235", "#5a9dbe", "#d23e70", "#61a886", "#cd4eb3", "#4e612f", "#653685", "#c4906e", "#454e7b", "#7d3e2a", "#b28cc5", "#793358", "#d37d95"]
+const regions = ["NA", "EU", "CN", "LMS", "VN", "OCE", "JP", "CIS", "BR", "TR", "LAS", "SEA", "KR"];
+const teams = ["Team Vitality", "100 Thieves", "Fnatic", "Invictus Gaming", "Royal Never Give Up", "Phong Vũ Buffalo", "Cloud9", "Dire Wolves", "G Rex", "G2 Esports", "KaBuM! e Sports", "Gen.G", "Team Liquid", "MAD Team", "EDward Gaming", "SuperMassive eSports", "Ascension Gaming", "Gambit Esports", "DetonatioN FocusMe", "Kaos Latin Gamers", "Infinity eSports"]
+
+const teamColors = (teamName) => {
+  return colors[teams.indexOf(teamName)];
 }
 
-const regionColors = () => {
-  return {
-    "NA": '#e6194b',
-    "EU": '#3cb44b',
-    "CN": '#ffe119',
-    "LMS": '#4363d8',
-    "VN": '#f58231',
-    "OCE": '#911eb4',
-    "JP": '#46f0f0',
-    "CIS": '#f032e6',
-    "BR": '#bcf60c',
-    "TR": '#fabebe',
-    "LAS": '#008080',
-    "SEA": '#e6beff',
-    "KR": '#9a6324',
-  }
+const regionColors = (regionName) => {
+  return colors[regions.indexOf(regionName)];
 }
+
 
 const $ = (selector) => {
   if (selector.charAt(0) === "#") {

@@ -24,7 +24,13 @@ class Scraper
 
     pros.map! do |pro|
       pro[:games] = pro[:wins] + pro[:losses]
-      pro[:region] = self.teams[pro[:team].to_sym][:region]
+      if self.teams[pro[:team].to_sym]
+        pro[:region] = self.teams[pro[:team].to_sym][:region]
+      else
+        puts pro[:team]
+        pro[:region] = "N/A"
+      end
+      # pro[:region] = self.teams[pro[:team].to_sym][:region]
       pro
     end
 
@@ -145,6 +151,11 @@ class Scraper
         color: "#ff0000", # light red
         secondaryColor: "#df0000", # darker red
       },
+      "Infinity eSports":{
+        region: "LAN",
+        color: "#000",
+        secondaryColor: "#fff"
+      }
     }
   end
 
