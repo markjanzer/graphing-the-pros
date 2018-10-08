@@ -1,8 +1,8 @@
 <h1>ENV Test</h1>
 <ul>
-  <li><%= TESTEROONI %></li>
+  <li><%# TESTEROONI %></li>
   <li><%= config[:TESTEROONI] %></li>
   <li><%= config["TESTEROONI"] %></li>
-  <li><%# ENV[:TESTEROONI] %></li>
+  <li><%= ENV[:TESTEROONI] %></li>
   <li><%# ENV["TESTEROONI"] %></li>
 </ul>
